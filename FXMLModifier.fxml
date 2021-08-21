@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1200.0" styleClass="BackA" stylesheets="@../StyleCSS.css" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dgsescuela.Formations.FXMLModifierController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="600.0" prefWidth="1200.0" spacing="15.0" style="-fx-background-color: gris;" styleClass="gestionVentes" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="139.0" prefWidth="1200.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="63.0" prefWidth="411.0" style="-fx-background-color: white; -fx-background-radius: 15;" text="Modifier une Formation" textFill="#ba6704">
+                     <font>
+                        <Font name="Arial Black" size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="436.0" prefWidth="1180.0" styleClass="backgroundBorder">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="374.0" prefWidth="290.0" spacing="15.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="230.0" style="-fx-background-color: white;" text="Information de la Formation" textFill="RED">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="Titre" prefHeight="25.0" prefWidth="326.0" promptText="Titre de la Formation" style="-fx-background-color: white;" />
+                        <JFXTextArea fx:id="Description" prefHeight="175.0" prefWidth="339.0" promptText="Description de la Formation" style="-fx-background-color: white;" />
+                        <JFXComboBox fx:id="Session" prefHeight="25.0" prefWidth="239.0" promptText="Session" style="-fx-background-color: white;" />
+                        <JFXComboBox fx:id="Niveau" prefHeight="25.0" prefWidth="239.0" promptText="Niveau" style="-fx-background-color: white;" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="374.0" prefWidth="388.0" spacing="15.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="230.0" style="-fx-background-color: white;" text="Date et Durée de la Formation" textFill="RED">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="300.0" spacing="7.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="35.0" prefWidth="125.0" style="-fx-background-color: white; -fx-background-radius: 5;" text="Date Début" textFill="GREEN">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <DatePicker fx:id="DateD" prefHeight="35.0" prefWidth="174.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="300.0" spacing="7.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="35.0" prefWidth="125.0" style="-fx-background-color: white; -fx-background-radius: 7;" text="Date Fin" textFill="RED">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <DatePicker fx:id="DateF" onAction="#CalculSemaine" onMouseDragReleased="#CalculSemaine" onMouseReleased="#CalculSemaine" prefHeight="35.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="300.0" spacing="7.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="35.0" prefWidth="168.0" style="-fx-background-color: white; -fx-background-radius: 7;" text="Nombre de semaine:">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="nbrsemaine" editable="false" onKeyPressed="#Clavier" prefHeight="35.0" prefWidth="135.0" promptText="0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="300.0" spacing="7.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="35.0" prefWidth="168.0" style="-fx-background-color: white; -fx-background-radius: 7;" text="Nombre de Séances:">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="nbrseance" editable="false" onKeyPressed="#Clavier" prefHeight="35.0" prefWidth="135.0" promptText="0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="300.0" spacing="7.0">
+                           <children>
+                              <JFXButton onMouseClicked="#FenetreEnseignant" prefHeight="34.0" prefWidth="168.0" style="-fx-hover: red;" styleClass="Combobox" text="Sera enseigné par:">
+                                 <font>
+                                    <Font name="System Bold" size="7.0" />
+                                 </font>
+                              </JFXButton>
+                              <TextField fx:id="idens" editable="false" onKeyPressed="#Clavier" prefHeight="35.0" prefWidth="135.0" promptText="0" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="374.0" prefWidth="515.0" spacing="15.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="230.0" style="-fx-background-color: white;" text="Jours d'étude de la Formation" textFill="RED">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <GridPane alignment="CENTER" gridLinesVisible="true" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="266.0" prefWidth="473.0" style="-fx-background-color: white;">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Label fx:id="jrs1" alignment="CENTER" prefHeight="33.0" prefWidth="445.0" text="Dimanche" textAlignment="CENTER" textFill="#41af3a" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Berlin Sans FB Bold" size="20.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="jrs11" alignment="CENTER" prefHeight="33.0" prefWidth="445.0" text="Lundi" textAlignment="CENTER" textFill="#41af3a" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Berlin Sans FB Bold" size="20.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="jrs12" alignment="CENTER" prefHeight="33.0" prefWidth="445.0" text="Mardi" textAlignment="CENTER" textFill="#41af3a" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Berlin Sans FB Bold" size="20.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="jrs13" alignment="CENTER" prefHeight="33.0" prefWidth="445.0" text="Mercredi" textAlignment="CENTER" textFill="#41af3a" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Berlin Sans FB Bold" size="20.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="jrs14" alignment="CENTER" prefHeight="33.0" prefWidth="445.0" text="Jeudi" textAlignment="CENTER" textFill="#41af3a" GridPane.rowIndex="5">
+                                 <font>
+                                    <Font name="Berlin Sans FB Bold" size="20.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="jrs15" alignment="CENTER" prefHeight="26.0" prefWidth="244.0" text="Samedi" textAlignment="CENTER" textFill="#41af3a">
+                                 <font>
+                                    <Font name="Berlin Sans FB Bold" size="20.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </Label>
+                              <Label fx:id="jrs17" alignment="CENTER" prefHeight="33.0" prefWidth="445.0" text="Vendredi" textAlignment="CENTER" textFill="#41af3a" GridPane.rowIndex="6">
+                                 <font>
+                                    <Font name="Berlin Sans FB Bold" size="20.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="20.0" />
+                                 </padding>
+                              </Label>
+                              <CheckBox fx:id="S1" alignment="CENTER" mnemonicParsing="false" onAction="#verification" prefHeight="30.0" prefWidth="90.0" text="Selctionner" textAlignment="CENTER" GridPane.columnIndex="3">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="S2" alignment="CENTER" mnemonicParsing="false" onAction="#verification" prefHeight="30.0" prefWidth="90.0" text="Selctionner" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="S3" alignment="CENTER" mnemonicParsing="false" onAction="#verification" prefHeight="30.0" prefWidth="90.0" text="Selctionner" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="S4" alignment="CENTER" mnemonicParsing="false" onAction="#verification" prefHeight="30.0" prefWidth="90.0" text="Selctionner" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="S5" alignment="CENTER" mnemonicParsing="false" onAction="#verification" prefHeight="30.0" prefWidth="90.0" text="Selctionner" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="S6" alignment="CENTER" mnemonicParsing="false" onAction="#verification" prefHeight="30.0" prefWidth="90.0" text="Selctionner" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="5">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </CheckBox>
+                              <CheckBox fx:id="S7" alignment="CENTER" mnemonicParsing="false" onAction="#verification" prefHeight="30.0" prefWidth="90.0" text="Selctionner" textAlignment="CENTER" GridPane.columnIndex="3" GridPane.rowIndex="6">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </CheckBox>
+                              <JFXTextField fx:id="D1" promptText="Heure début" GridPane.columnIndex="1" />
+                              <JFXTextField fx:id="D3" promptText="Heure début" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <JFXTextField fx:id="D2" promptText="Heure début" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <JFXTextField fx:id="D6" promptText="Heure début" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                              <JFXTextField fx:id="D5" promptText="Heure début" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                              <JFXTextField fx:id="D4" promptText="Heure début" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <JFXTextField fx:id="D7" promptText="Heure début" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                              <JFXTextField fx:id="F1" promptText="Heure Fin" GridPane.columnIndex="2" />
+                              <JFXTextField fx:id="F7" promptText="Heure Fin" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                              <JFXTextField fx:id="F6" promptText="Heure Fin" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                              <JFXTextField fx:id="F5" promptText="Heure Fin" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                              <JFXTextField fx:id="F4" promptText="Heure Fin" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                              <JFXTextField fx:id="F3" promptText="Heure Fin" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <JFXTextField fx:id="F2" promptText="Heure Fin" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </GridPane>
+                        <HBox alignment="CENTER" prefHeight="44.0" prefWidth="370.0" spacing="5.0">
+                           <children>
+                              <JFXTextField fx:id="Prix" labelFloat="true" prefHeight="25.0" prefWidth="334.0" promptText="Montant la Formation" style="-fx-background-color: white; -fx-text-fill: blue;">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </JFXTextField>
+                              <Label prefHeight="30.0" prefWidth="73.0" style="-fx-background-color: white; -fx-background-radius: 5;" text="DA" textFill="RED">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets left="10.0" right="10.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="152.0" prefWidth="1180.0" spacing="20.0" styleClass="backgroundBorder">
+               <children>
+                  <JFXButton prefHeight="47.0" prefWidth="279.0" style="-fx-hover: red;" styleClass="Combobox" text="(F9) Annuler">
+                     <font>
+                        <Font name="System Bold" size="7.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton onAction="#ModifierFormation" onKeyPressed="#Clavier" prefHeight="39.0" prefWidth="260.0" text="(F11) Valider" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
