@@ -129,6 +129,7 @@
                               <JFXButton onAction="#AjouterFormation" prefHeight="70.0" prefWidth="200.0" stylesheets="@../StyleCSS.css" text="Ajouter une Nouvelle Entrer" />
                               <JFXButton onAction="#ModifierFormation" prefHeight="70.0" prefWidth="200.0" text="Modifier la Selection" />
                               <JFXButton onAction="#SupprimerFormation" prefHeight="70.0" prefWidth="200.0" text="Supprimer la Selection" />
+                              <JFXButton onAction="#AfficherFormation" prefHeight="70.0" prefWidth="200.0" text="Afficher la Selection" />
                            </children>
                         </VBox>
                      </children></AnchorPane>
@@ -141,7 +142,7 @@
                                     <Font name="Berlin Sans FB" size="40.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="fxRechercher" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="25.0" prefWidth="400.0" promptText="Recherche">
+                              <TextField fx:id="fxRechercher" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" onKeyReleased="#Recherche" prefHeight="25.0" prefWidth="400.0" promptText="Recherche">
                                  <font>
                                     <Font size="14.0" />
                                  </font>

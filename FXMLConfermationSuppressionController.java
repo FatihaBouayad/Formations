@@ -68,7 +68,8 @@ public class FXMLConfermationSuppressionController implements Initializable {
     private Button btnClose;
 
     ModeleFormationsStatic CurrentFournisseurStatic = new ModeleFormationsStatic();
-
+ String sqlS=null; String sqlS2=null; String sqlS3=null; String sqlS4=null; String sqlS5=null; String sqlSS=null;
+    String v=null; String v2=null; String v3=null; String v4=null; String v5=null;String v10=null;
     @FXML
     private void SupprimerCondidat() {
         try {
@@ -85,16 +86,21 @@ public class FXMLConfermationSuppressionController implements Initializable {
         }
         //SupprimerSemaine();
     }
-
+@FXML 
+void Init(){
+     String sqlS=null; String sqlS2=null; String sqlS3=null; String sqlS4=null; String sqlS5=null;
+    String v=null; String v2=null; String v3=null; String v4=null; String v5=null;
+}
     @FXML
 void SupprimerSemaine(){
+    Init();
             try {
-            String sql = "DELETE  FROM `semaine`  WHERE IDFormation ='" + CurrentFournisseurStatic.getIdFormation()+ "'";
-            
-           pst = conn.prepareStatement(sql);
+          sqlSS = "DELETE FROM `semaine` WHERE IDFormation ='"+CurrentFournisseurStatic.getIdFormation()+"'" ;
+           pst = conn.prepareStatement(sqlSS);
             pst.executeUpdate();
             pst.close();
             rs.close();
+            
 
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -121,24 +127,93 @@ void SupprimerInscription (){
     }
 @FXML
 void SupprimerSeance(){
-    String sqlS=null;
-    String v=null;
+   
      try {
-         sqlS = "SELECT IDSemaine FROM semaine where IDFormation ='"+CurrentFournisseurStatic.getIdFormation()+"'" ;
+         sqlS = "SELECT IDSemaine FROM semaine where numero = '1' and IDFormation ='"+CurrentFournisseurStatic.getIdFormation()+"'" ;
             pst = conn.prepareStatement(sqlS);
             rs = pst.executeQuery();
             if(rs.next()){
                 v=rs.getString(1);
             }
-         
-         
-            String sql = "DELETE  FROM `sceance`  WHERE IDSemaine ='" + v.toString()+"'";
+            rs.close();
+            sqlS2 = "SELECT IDSemaine FROM semaine where numero = '2' and IDFormation ='"+CurrentFournisseurStatic.getIdFormation()+"'" ;
+            pst = conn.prepareStatement(sqlS2);
+            rs = pst.executeQuery();
+            if(rs.next()){
+                v2=rs.getString(1);
+            }
+             rs.close();
+            sqlS3 = "SELECT IDSemaine FROM semaine where numero = '3' and IDFormation ='"+CurrentFournisseurStatic.getIdFormation()+"'" ;
+            pst = conn.prepareStatement(sqlS3);
+            rs = pst.executeQuery();
+            if(rs.next()){
+                v3=rs.getString(1);
+            }
+             rs.close();
+            sqlS4 = "SELECT IDSemaine FROM semaine where numero = '4' and IDFormation ='"+CurrentFournisseurStatic.getIdFormation()+"'" ;
+            pst = conn.prepareStatement(sqlS4);
+            rs = pst.executeQuery();
+            if(rs.next()){
+                v4=rs.getString(1);
+            }
+             rs.close();
+          sqlS5 = "SELECT IDSemaine FROM semaine where numero = '5' and IDFormation ='"+CurrentFournisseurStatic.getIdFormation()+"'" ;
+            pst = conn.prepareStatement(sqlS5);
+            rs = pst.executeQuery();
+            if(rs.next()){
+                v5=rs.getString(1);
+            }
+             rs.close();
+         if(v !=null){
+            String sql = "DELETE  FROM `sceance` WHERE IDSemaine ='" + v.toString()+"'";
             
            pst = conn.prepareStatement(sql);
             pst.executeUpdate();
             pst.close();
             rs.close();
-
+         }
+         if(v2 !=null){
+            String sql2 = "DELETE  FROM `sceance`  WHERE IDSemaine ='" + v2.toString()+"'";
+            
+           pst = conn.prepareStatement(sql2);
+            pst.executeUpdate();
+            pst.close();
+            rs.close();
+         }
+         if(v3 !=null){
+            String sql3 = "DELETE  FROM `sceance`  WHERE IDSemaine ='" + v3.toString()+"'";
+            
+           pst = conn.prepareStatement(sql3);
+            pst.executeUpdate();
+            pst.close();
+            rs.close();
+         }
+         if(v4 !=null){
+            String sql4 = "DELETE  FROM `sceance`  WHERE IDSemaine ='" + v4.toString()+"'";
+            
+           pst = conn.prepareStatement(sql4);
+            pst.executeUpdate();
+            pst.close();
+            rs.close();
+         }
+         if(v5 !=null){
+            String sql5 = "DELETE  FROM `sceance`  WHERE IDSemaine ='" + v5.toString()+"'";
+            
+           pst = conn.prepareStatement(sql5);
+            pst.executeUpdate();
+            pst.close();
+            rs.close();
+         }
+        if((v==null) || (v2==null)) {
+             System.out.println("vide1");
+         }
+         if((v3==null) || (v4==null)) {
+             System.out.println("vide2");
+         }
+          if((v5==null) ) {
+             System.out.println("vide3");
+         }
+             
         } catch (SQLException ex) {
             ex.printStackTrace();
 

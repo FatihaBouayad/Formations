@@ -356,6 +356,21 @@ public class FXMLFormationsController implements Initializable {
        StageFor.showAndWait();
 
     }
+     public void AfficherFormation() throws IOException {
+
+   selectCondidat();
+   
+        Parent newRoot;
+        Scene newScene;
+       newRoot = FXMLLoader.load(getClass().getResource("/dgsescuela/Formations/FXMLAffichage.fxml"));
+       newScene = new Scene(newRoot);
+
+       StageFor= new Stage();;
+       StageFor.setTitle("Afficher formation");
+       StageFor.setScene(newScene);
+       StageFor.showAndWait();
+
+    }
      @FXML
      public void Recherche() throws SQLException{
 
@@ -376,7 +391,7 @@ public class FXMLFormationsController implements Initializable {
 
  @FXML
      public void RechercheDonnee() throws SQLException{       
-          String sql="select IDFormation,Date_Ajout,TitreFormation,Prix,Session,DateDebut,DateFin,idEnseignant from formation where IDFormation ='"+fxRechercher.getText().toLowerCase()+"' OR TitreFormation= '"+fxRechercher.getText().toLowerCase()+"' OR Session= '"+fxRechercher.getText().toLowerCase()+"' OR Prix= '"+fxRechercher.getText().toLowerCase()+"' OR Date_Ajout = '"+fxRechercher.getText()+"' OR DateDebut = '"+fxRechercher.getText()+"'OR DateFin='"+fxRechercher.getText()+"'OR idEnseignant='"+fxRechercher.getText()+"'";
+          String sql="select IDFormation,Date_Ajout,TitreFormation,Prix,Session,DateDebut,DateFin,idEnseignant,Niveau,Description from formation where IDFormation ='"+fxRechercher.getText().toLowerCase()+"' OR TitreFormation= '"+fxRechercher.getText().toLowerCase()+"' OR Session= '"+fxRechercher.getText().toLowerCase()+"' OR Prix= '"+fxRechercher.getText().toLowerCase()+"' OR Date_Ajout = '"+fxRechercher.getText()+"' OR DateDebut = '"+fxRechercher.getText()+"'OR DateFin='"+fxRechercher.getText()+"'OR idEnseignant='"+fxRechercher.getText()+"'";
             
         try {
             
